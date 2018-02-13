@@ -1,9 +1,14 @@
-execute pathogen#infect()
-
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'vim-syntastic/syntastic'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'sickill/vim-monokai'
+Plug 'pangloss/vim-javascript'
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -20,8 +25,9 @@ filetype indent on
 let mapleader = ","
 let g:mapleader = ","
 
-let g:pydiction_location = '~/.vim/ftplugin/pydiction/complete_dict'
-let g:pydiction_menu_height = 20
+set nobackup       "no backup files
+set nowritebackup  "only in case you don't want a backup file while editing
+set noswapfile     "no swap files
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -147,8 +153,6 @@ au FileType javascript inoremap <buffer> $r return
 au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
 
 
-
-
 """"""""""""""""""""""""""""""
 " => Command-T
 """"""""""""""""""""""""""""""
@@ -196,3 +200,9 @@ set gfn=Anonymous\ 9
 filetype plugin on
 
 map <silent> <c-e> :NERDTreeToggle<CR>
+
+"ctrlp filter
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+let g:syntastic_javascript_checkers=['eslint']
+
