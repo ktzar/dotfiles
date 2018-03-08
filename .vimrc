@@ -8,6 +8,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'sickill/vim-monokai'
 Plug 'pangloss/vim-javascript'
+Plug 'terryma/vim-expand-region'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
