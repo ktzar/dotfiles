@@ -191,6 +191,7 @@ if has('gui_running')
     colorscheme monokai
     set background=dark
 endif
+
 set number
 set guioptions-=T
 let NERDTreeIgnore = ['\.pyc$']
@@ -204,7 +205,6 @@ if has("gui_running")
     set guifont=Menlo\ Regular:h12
   elseif has("gui_win32")
     set guifont=Courier\ New:h9
-    " set guifont=Courier\ New:h10:cANSI
   endif
 endif
 
@@ -223,8 +223,15 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 if executable('ag')
+  "let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
   set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
 
 set statusline+=%#warningmsg#
@@ -245,5 +252,7 @@ vmap <C-C> "+y
 imap <C-V> <Esc>"+pa
 
 let g:vim_markdown_folding_disabled = 1
-let g:gitgutter_git_executable = 'C:\dev\cmder\vendor\git-for-windows\bin\git.exe'
 
+if has("gui_win32")
+    let g:gitgutter_git_executable = 'C:\Program Files\Git\bin\git.exe'
+endif
