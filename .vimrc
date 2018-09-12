@@ -26,9 +26,8 @@ filetype indent on
 let mapleader = ","
 let g:mapleader = ","
 
-set nobackup       "no backup files
-set nowritebackup  "only in case you don't want a backup file while editing
-set noswapfile     "no swap files
+let g:pydiction_location = '~/.vim/ftplugin/pydiction/complete_dict'
+let g:pydiction_menu_height = 20
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -62,6 +61,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
+set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -154,6 +154,8 @@ au FileType javascript inoremap <buffer> $r return
 au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
 
 
+
+
 """"""""""""""""""""""""""""""
 " => Command-T
 """"""""""""""""""""""""""""""
@@ -184,26 +186,73 @@ nnoremap <Leader>h <C-w>h
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 
-
 "Mine
-colorscheme monokai
-set background=dark
+if has('gui_running')
+    colorscheme monokai
+    set background=dark
+endif
+
 set number
 set guioptions-=T
 let NERDTreeIgnore = ['\.pyc$']
-set guifont=Anonymous\ 9
+let g:NERDTreeDirArrows=1
+let g:NERDTreeChDirMode=2
+
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Courier\ New\ 8
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h12
+  elseif has("gui_win32")
+    set guifont=Courier\ New:h9
+  endif
+endif
 
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set gfn=Anonymous\ 9
 filetype plugin on
 
 map <silent> <c-e> :NERDTreeToggle<CR>
 
-"ctrlp filter
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.?(git\|hg\|svn\|dist\|coverage\|preferences\|node_modules)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
+if executable('ag')
+  "let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+map <leader>s :SyntasticToggleMode
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers=['eslint']
 
+"<Ctrl-C> -- copy (goto visual mode and copy)
+vmap <C-C> "+y
+
+"<Ctrl-V> -- paste
+imap <C-V> <Esc>"+pa
+
+let g:vim_markdown_folding_disabled = 1
+
+if has("gui_win32")
+    let g:gitgutter_git_executable = 'C:\Program Files\Git\bin\git.exe'
+endif
