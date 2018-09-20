@@ -1,0 +1,24 @@
+[alias]
+        co = checkout
+        d = diff
+        st = status
+        b = branch
+        last = log -1 --stat
+        cp = cherry-pick
+        cl = clone
+        ci = commit
+        br = branch
+        unstage = reset HEAD --
+        dc = diff --cached
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+[core]
+        editor = \"vim\"
+        trustctime = false
+        filemode = false
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+        ui = true
+        pager = true
