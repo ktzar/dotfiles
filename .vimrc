@@ -196,6 +196,8 @@ endif
 set number
 set guioptions-=T
 let NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '~'
 let g:NERDTreeDirArrows=1
 let g:NERDTreeChDirMode=2
 
