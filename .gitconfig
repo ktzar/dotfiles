@@ -22,3 +22,13 @@
         interactive = auto
         ui = true
         pager = true
+[user]
+	email = miguelmail@gmail.com
+	name = miguel
+[cola]
+	spellcheck = false
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
