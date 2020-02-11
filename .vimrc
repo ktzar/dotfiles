@@ -8,6 +8,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'sickill/vim-monokai'
 Plug 'pangloss/vim-javascript'
 Plug 'terryma/vim-expand-region'
@@ -197,6 +198,8 @@ endif
 set number
 set guioptions-=T
 let NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '~'
 let g:NERDTreeDirArrows=1
 let g:NERDTreeChDirMode=2
 
