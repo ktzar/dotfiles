@@ -4,6 +4,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'mortonfox/nerdtree-ag'
 Plug 'vim-syntastic/syntastic'
+Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
@@ -11,6 +12,7 @@ Plug 'rking/ag.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'sickill/vim-monokai'
 Plug 'pangloss/vim-javascript'
+
 Plug 'terryma/vim-expand-region'
 call plug#end()
 
@@ -35,6 +37,7 @@ let g:pydiction_menu_height = 20
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+aunmenu TouchBar
 " Set 7 lines to the curors - when moving vertical..
 set ruler "Always show current position
 
