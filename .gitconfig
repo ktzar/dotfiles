@@ -22,3 +22,6 @@
         interactive = auto
         ui = true
         pager = true
+[user]
+	email = miguelmail@gmail.com
+	name = miguel
