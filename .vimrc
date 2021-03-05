@@ -3,12 +3,16 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'sickill/vim-monokai'
 Plug 'pangloss/vim-javascript'
 Plug 'terryma/vim-expand-region'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -189,8 +193,8 @@ nnoremap <Leader>k <C-w>k
 "Mine
 if has('gui_running')
     colorscheme monokai
-    set background=dark
 endif
+set background=dark
 
 set number
 set guioptions-=T
