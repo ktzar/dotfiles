@@ -12,4 +12,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 
 ## New Machine
+```
 brew install $(cat brew_packages.txt)
+```
