@@ -1,1 +1,1 @@
-tmux node putty golang ag silversearcher-ag ag jq tig
+tmux node putty golang ag jq tig
