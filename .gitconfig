@@ -1,6 +1,6 @@
 [alias]
         co = checkout
-        d = diff
+        d = diff --exit-code
         st = status
         b = branch
         last = log -1 --stat
@@ -32,3 +32,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[url "git@github.com:"]
+    insteadOf = https://github.com/
