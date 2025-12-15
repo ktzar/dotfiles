@@ -5,6 +5,7 @@
         b = branch
         last = log -1 --stat
         cp = cherry-pick
+        lol = log --oneline --graph
         cl = clone
         ci = commit
         br = branch
@@ -32,5 +33,12 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[url "git@github.com:"]
-    insteadOf = https://github.com/
+[filter "strongbox"]
+	clean = strongbox -clean %f
+	smudge = strongbox -smudge %f
+	required = true
+[diff "strongbox"]
+	textconv = strongbox -diff
+
+#[url "git@github.com:"]
+    #insteadOf = https://github.com/
